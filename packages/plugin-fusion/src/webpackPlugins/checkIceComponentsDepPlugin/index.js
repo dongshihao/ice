@@ -41,15 +41,15 @@ module.exports = class CheckDepsPlugin {
       });
 
       // 1. 多份基础组件
-      const baseComponentDeps = ['@icedesign/base', '@alife/next', '@ali/ice'].filter((name) => depModules[name]);
+      const baseComponentDeps = ['@icedesign/base', 'cn-next', '@ali/ice'].filter((name) => depModules[name]);
       if (baseComponentDeps.length > 1) {
         this.log.warn(`项目依赖了多份基础组件 ${baseComponentDeps}，建议通过配置 buildConfig.uniteBaseComponent 优化`);
       }
 
       // 2. 业务组件与基础组件的版本对应关系
       const pkgDirectDeps = this.pkg.dependencies || {};
-      const depFdNext = pkgDirectDeps['@alifd/next'];
-      const depFeNext = pkgDirectDeps['@ali/ice'] || pkgDirectDeps['@icedesign/base'] || pkgDirectDeps['@alife/next'];
+      const depFdNext = pkgDirectDeps['cn-next'];
+      const depFeNext = pkgDirectDeps['@ali/ice'] || pkgDirectDeps['@icedesign/base'] || pkgDirectDeps['cn-next'];
 
       if (depFeNext && !depFdNext) {
         // 只依赖了 0.x 的项目应该使用 0.x 的业务组件

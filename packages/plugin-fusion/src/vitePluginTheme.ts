@@ -58,7 +58,7 @@ function vitePluginTheme(options: PluginOptions): Plugin {
 
       let importVarsCode = '';
       if (!/^node_modules[\\/]/.test(id)) {
-        importVarsCode = '@import \'@alifd/next/variables.scss\';';
+        importVarsCode = '@import \'cn-next/variables.scss\';';
       }
 
       let iconImport = '';

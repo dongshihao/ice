@@ -117,11 +117,11 @@ module.exports = async (
           !disableModularImport && require('vite-plugin-style-import').default({
             libs: [
               {
-                libraryName: '@alifd/next',
+                libraryName: 'cn-next',
                 esModule: true,
                 resolveStyle: (name) => {
                   // use css variable style for default
-                  return `@alifd/next/es/${name}/${
+                  return `cn-next/es/${name}/${
                     cssVariable ? 'style2' : 'style'
                   }`;
                 },
@@ -156,7 +156,7 @@ module.exports = async (
         const themesCssVars = {};
         const varsPath =
           !cssVariable &&
-          getVariablesPath({ packageName: '@alifd/next', silent: true });
+          getVariablesPath({ packageName: 'cn-next', silent: true });
         // get scss variables and generate css variables
         themePackage.forEach(({ name, ...themeData }) => {
           const themePath = getVariablesPath({
@@ -359,12 +359,12 @@ module.exports = async (
             libraryName: '@icedesign/base',
             style,
           },
+          // {
+          //   libraryName: '@alife/next',
+          //   style,
+          // },
           {
-            libraryName: '@alife/next',
-            style,
-          },
-          {
-            libraryName: '@alifd/next',
+            libraryName: 'cn-next',
             libraryDirectory: nextLibDir,
             style: cssVariable ? (name) => `${name}/style2` : style,
             ...importOptions,
@@ -422,12 +422,12 @@ module.exports = async (
           '@ali/ice': uniteBaseComponent,
 
           // @alife/next -> uniteBaseComponent
-          '@alife/next/lib/_components/@alife/next-core/lib/index.scss': `${uniteBaseComponent}/reset.scss`,
-          '@alife/next/reset.scss': `${uniteBaseComponent}/reset.scss`,
+          'cn-next/lib/_components/@alife/next-core/lib/index.scss': `${uniteBaseComponent}/reset.scss`,
+          'cn-next/reset.scss': `${uniteBaseComponent}/reset.scss`,
           // sass 里 @import '~xxx'
-          '@alife/next/variables.scss': `${uniteBaseComponent}/variables.scss`,
-          '@alife/next/lib/core/index.scss': `${uniteBaseComponent}/lib/core/index.scss`,
-          '@alife/next': `${uniteBaseComponent}`,
+          'cn-next/variables.scss': `${uniteBaseComponent}/variables.scss`,
+          'cn-next/lib/core/index.scss': `${uniteBaseComponent}/lib/core/index.scss`,
+          'cn-next': `${uniteBaseComponent}`,
 
           // @icedesign/base -> uniteBaseComponent
           '@icedesign/base/reset.scss': `${uniteBaseComponent}/reset.scss`,
@@ -494,9 +494,10 @@ module.exports = async (
                 externalKey,
                 upperFirst(camelCase(componentName)),
               ];
-              const commonPackage = feNextRegex.test(request)
-                ? '@alife/next'
-                : '@alifd/next';
+              // const commonPackage = feNextRegex.test(request)
+              //   ? '@alife/next'
+              //   : '@alifd/next';
+              const commonPackage = 'cn-next';
               const commonExternal = [
                 isNext ? commonPackage : '@icedesign/base',
                 upperFirst(camelCase(componentName)),
