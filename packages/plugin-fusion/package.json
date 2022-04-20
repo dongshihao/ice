@@ -1,6 +1,6 @@
 {
   "name": "cn-build-plugin-fusion",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "plugin for build scripts while use fusion component",
   "main": "lib/index.js",
   "scripts": {
