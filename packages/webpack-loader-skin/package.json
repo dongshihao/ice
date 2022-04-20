@@ -1,5 +1,5 @@
 {
-  "name": "ice-skin-loader",
+  "name": "cn-ice-skin-loader",
   "version": "0.3.2",
   "description": "ice skin loader",
   "main": "lib/index.js",
