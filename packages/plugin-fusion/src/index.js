@@ -252,8 +252,8 @@ module.exports = async (
       ['scss', 'scss-module'].forEach((rule) => {
         config.module
           .rule(rule)
-          .use('ice-skin-loader')
-          .loader(require.resolve('ice-skin-loader'))
+          .use('cn-ice-skin-loader')
+          .loader(require.resolve('cn-ice-skin-loader'))
           .options({
             themeFile,
             themeConfig: Object.assign(
@@ -456,17 +456,17 @@ module.exports = async (
 
       if (uniteNextLib) {
         const replaceRegex = new RegExp(
-          `(alife|alifd)/next/${nextLibDir === 'es' ? 'lib' : 'es'}`
+          `cn-next/${nextLibDir === 'es' ? 'lib' : 'es'}`
         );
         config
           .plugin('UniteNextLib')
           .use(webpack.NormalModuleReplacementPlugin, [
-            /@(alife|alifd)\/next\/(.*)/,
+            /cn-next\/(.*)/,
             function (resource) {
               // eslint-disable-next-line no-param-reassign
               resource.request = resource.request.replace(
                 replaceRegex,
-                `alifd/next/${nextLibDir}`
+                `cn-next/${nextLibDir}`
               );
             },
           ]);
@@ -478,8 +478,8 @@ module.exports = async (
         if (userConfig.externals) {
           externals.push(userConfig.externals);
         }
-        const feNextRegex = /@alife\/next\/(es|lib)\/([-\w+]+)$/;
-        const nextRegex = /@(alife|alifd)\/next\/(es|lib)\/([-\w+]+)$/;
+        const feNextRegex = /cn-next\/(es|lib)\/([-\w+]+)$/;
+        const nextRegex = /cn-next\/(es|lib)\/([-\w+]+)$/;
         const baseRegex = /@icedesign\/base\/lib\/([-\w+]+)$/;
         externals.push(function (_context, request, callback) {
           const isNext = nextRegex.test(request);

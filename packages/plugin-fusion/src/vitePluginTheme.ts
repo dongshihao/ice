@@ -50,7 +50,7 @@ function vitePluginTheme(options: PluginOptions): Plugin {
         return null;
       }
       let prefixVars = '';
-      if (themeConfig.nextPrefix && /@alifd[\\/]next[\\/](lib|es)[\\/](.+).scss$/.test(id)) {
+      if (themeConfig.nextPrefix && /cn-next[\\/](lib|es)[\\/](.+).scss$/.test(id)) {
         // @deprecated
         // 将 next 1.x 的 prefix 从 next- 改为自定义前缀，解决 0.x&1.x 混用的问题
         prefixVars = `$css-prefix: "${themeConfig.nextPrefix}";`;
